@@ -4,8 +4,6 @@
 
 /////////////////Work 19 November2019/////////////////////
 
-
-
 /////////////////////UART//////////////////////////
 #define F_CPU 8000000UL
 ///////////////////////////////////////////////////
@@ -51,8 +49,6 @@ uint8_t SP_DIFF=0;
 #include "uart_func.h"
 #include "datalogger.h"
 #include "DHT11_2.h"
-
-
 
 ///////////////////////////////////////////
 //////////////////////////////Time func
@@ -125,10 +121,36 @@ ISR (TIMER0_OVF_vect) // timer0 overflow interrupt
 	
 	if(T2TickCount<500){PORTF |=(1<<PINF1);}else{PORTF &=(~(1<<PINF1));}
 	
-	if(data_count>32){data_count=0;sprintf(data_in,"");}
-	if(data_count>0){DATATIMECOUNT++;if(DATATIMECOUNT>100){DATATIMECOUNT=0;data_count=0;sprintf(data_in,"");}}
+	if(data_count>32)
+	{
+		data_count=0;
+		sprintf(data_in,"");
+	}
+	
+	if(data_count>0)
+	{
+		DATATIMECOUNT++;
+		if(DATATIMECOUNT > 100)
+		{
+			DATATIMECOUNT=0;
+			data_count=0;
+			sprintf(data_in,"");
+		}
+	}
 		
-	if(BUZZER2==1){BUZZERCNTR2++;if(BUZZERCNTR2>3000){BUZZERCNTR2=0;}PORTA |=(1<<PINA1);if(BUZZERCNTR2>100){PORTA &=(~(1<<PINA1));}}
+	if(BUZZER2==1)
+	{
+		BUZZERCNTR2++;
+		if(BUZZERCNTR2 > 3000)
+		{
+			BUZZERCNTR2=0;
+		}
+		PORTA |=(1<<PINA1);
+		if(BUZZERCNTR2 > 100)
+		{
+			PORTA &=(~(1<<PINA1));
+		}
+	}
 	
 	
 	if(T2TickCount > 976)
@@ -212,8 +234,6 @@ void special1()
 		wdt_reset();
 		wdt_enable(WDTO_2S);
 	}
-	
-	
 }
 
 void ButtonCheck_Secondary()
@@ -425,6 +445,8 @@ void take_all_setting()
 
 	LOWV_SET=eeprom_read_word(300);
 	
+	RECONNECT_VOLT_SET = eeprom_read_word(220);
+	
 	INTERV=eeprom_read_byte((uint8_t *)aE[7][0]);
 	RPMWORKS=eeprom_read_byte((uint8_t *)aE[11][0]);
 }
@@ -473,6 +495,7 @@ void init_internaleeprom()
 	
 	
 	eeprom_write_word(300,480);
+	eeprom_write_word(220,490);
 	
 }
 
@@ -493,6 +516,7 @@ void init_internaleeprom2()
 	
 	
 	eeprom_write_word(300,400);
+	eeprom_write_word(220,420);
 	
 }
 
@@ -585,8 +609,6 @@ void Pwm_Step()
 
 int FAN_timeover()
 {
-	
-	
 	if(ssf>=FANS)
 	{
 		if(mmf>=FANM)
@@ -923,7 +945,7 @@ void increment_MainItem()
 	if(level==0)
 	{
 		SFTM_ITM++;
-		if(SFTM_ITM>12)
+		if(SFTM_ITM>13)
 		{
 			SFTM_ITM=1;
 		}
@@ -944,11 +966,15 @@ void increment_MainItem()
 		}
 		else
 		{
-			if((SFTM_ITM<=3)|(SFTM_ITM==6)|(SFTM_ITM==7)|(SFTM_ITM==8)|(SFTM_ITM==12))
+			if((SFTM_ITM<=3)|(SFTM_ITM==6)|(SFTM_ITM==7)|(SFTM_ITM==8)|(SFTM_ITM==12)|(SFTM_ITM==13))
 			{
 				if(SFTM_ITM==7)
 				{
 					VALUE5=eeprom_read_word(300); //Read only for menu item 7
+				}
+				else if (SFTM_ITM==13)
+				{
+					VALUE5=eeprom_read_word(220);
 				}
 				//else if(SFTM_ITM==23){eeprom_read_byte((uint8_t *)aE[19][0]);}else
 				{
@@ -978,24 +1004,30 @@ void increment_MainItem()
 		{
 			VALUE2=0;
 		}
-		
 		VALUE5++;
 	}        
 }
 
 void decrement_MainItem()
-	{
-	
+{
 if(level==0)
    {
    SFTM_ITM--;
-   if(SFTM_ITM<1){SFTM_ITM=12;}
+   if(SFTM_ITM<1){SFTM_ITM=13;}
 	   if(SFTM_ITM==10){DATE_TIME_Conversion();VALUE2=HOURin;VALUE3=MINin;VALUE4=SECin;}
 		   else if(SFTM_ITM==11){DATE_TIME_Conversion();VALUE2=DATEin;VALUE3=MONTHin;VALUE4=YEARin;}
 			   else{
-   	if((SFTM_ITM<=3)|(SFTM_ITM==6)|(SFTM_ITM==7)|(SFTM_ITM==8)|(SFTM_ITM==12))
+   	if((SFTM_ITM<=3)|(SFTM_ITM==6)|(SFTM_ITM==7)|(SFTM_ITM==8)|(SFTM_ITM==12)|(SFTM_ITM==13))
 		{
-	   	if(SFTM_ITM==7){VALUE5=eeprom_read_word(300);}
+	   		if(SFTM_ITM==7)
+			{
+				VALUE5=eeprom_read_word(300);
+			}
+			
+			if(SFTM_ITM==13)
+			{
+				VALUE5=eeprom_read_word(220);
+			}
 		//else if(SFTM_ITM==23){eeprom_read_byte((uint8_t *)aE[19][0]);}else
 	   		{
 		   	VALUE2=eeprom_read_byte((uint8_t *)aE[SFTM_ITM-1][0]);
@@ -1100,34 +1132,38 @@ if((BUTTON==1)&(level==0))
 	}
 else if((BUTTON==2)&(level==0))
 	{
-	level=1;sub_level2=1;
+		level=1;sub_level2=1;
 	}
 else if((BUTTON==3)&(level==1))
 	{
-	if((SFTM_ITM<=3)|(SFTM_ITM==6)|(SFTM_ITM==7)|(SFTM_ITM==8)|(SFTM_ITM==12))
-	{level=2;}
+	if((SFTM_ITM<=3)|(SFTM_ITM==6)|(SFTM_ITM==7)|(SFTM_ITM==8)|(SFTM_ITM==12)|(SFTM_ITM==13))
+	{
+		level=2;
+	}
+	else
+	{
+		if(sub_level2==1)
+		{
+			level=1;
+			BUTTON=2;
+			sub_level2=2;
+			tmpsave1=VALUE2;
+			VALUE2=VALUE3;
+		}
+		else if(sub_level2==2)
+		{
+			level=1;
+			BUTTON=2;
+			sub_level2=3;
+			tmpsave2=VALUE2;
+			VALUE2=VALUE4;
+		}
 		else
-			{
-			if(sub_level2==1)
-				{
-				level=1;
-				BUTTON=2;
-				sub_level2=2;
-				tmpsave1=VALUE2;
-				VALUE2=VALUE3;
-				}
-			else if(sub_level2==2)
-				{
-				level=1;
-				BUTTON=2;
-				sub_level2=3;
-				tmpsave2=VALUE2;
-				VALUE2=VALUE4;
-				}
-			else{
-				level=2;sub_level2=0;
-				}
-			}
+		{
+			level=2;
+			sub_level2=0;
+		}
+	}
 	}
 
 BUTTON++;
@@ -1205,7 +1241,7 @@ if(BUTTON>0){
       }
    }
 
-      }///////////End button check
+}///////////End button check
 
 void menu_date_func()
 {
@@ -1227,16 +1263,22 @@ else if(level==1)
 				lcdPrintData("  /",3);disp_int(VALUE3);lcdPrintData("/20",3);disp_int(VALUE4);
 				}
 			}
-		else if(sub_level2==2)
+			else if(sub_level2==2)
 			{
 				if(VALUE2>12){VALUE2=12;}
-			if(blink<5)
+				if(blink<5)
 				{
-				disp_int(tmpsave1);lcdPrintData("/",1);disp_int(VALUE2);lcdPrintData("/20",3);disp_int(VALUE4);
+					disp_int(tmpsave1);
+					lcdPrintData("/",1);
+					disp_int(VALUE2);
+					lcdPrintData("/20",3);
+					disp_int(VALUE4);
 				}
-			else
+				else
 				{
-				disp_int(tmpsave1);lcdPrintData("/  /20",6);disp_int(VALUE4);
+					disp_int(tmpsave1);
+					lcdPrintData("/  /20",6);
+					disp_int(VALUE4);
 				}
 			}
 		else if(sub_level2==3)
@@ -1348,9 +1390,24 @@ lcdGotoXY(0,1);
 	  case 12:
 	  lcdPrintData("RPM Off: ",9);
 	  break;
+	  case 13:
+	  lcdPrintData("Fan Reconnect volt<",20);
+	  break;
       }
 
-if(level>0){blink++;if(blink>10){blink=0;}}else{blink=0;}
+	if(level > 0)
+	{
+		blink++;
+		if(blink > 10)
+		{
+			blink=0;
+		}
+	}
+	else
+	{
+		blink=0;
+	}
+	
 if(SFTM_ITM==9){
 	lcdGotoXY(0,2);
 	if(level==0){lcdPrintData("                    ",20);}
@@ -1378,11 +1435,46 @@ else if(SFTM_ITM==2){
 	lcdDataWrite(223);
 	lcdPrintData("C ",2);
 }
-else if(SFTM_ITM==7){
-	lcdGotoXY(8,2);	
-	if(level==0){disp_float2(VALUE5);}
-	else if(level=1){if(blink<5){lcdPrintData("  . ",4);}else{disp_float2(VALUE5);}}
-	lcdPrintData("Volt",4);	
+else if(SFTM_ITM==7)
+	{
+		lcdGotoXY(8,2);
+		if(level==0)
+		{
+			disp_float2(VALUE5);
+		}
+		else if(level==1)
+		{
+			if(blink < 5)
+			{
+				lcdPrintData("  . ",4);
+			}
+			else
+			{
+				disp_float2(VALUE5);
+			}
+		}
+		lcdPrintData("Volt",4);	
+	}
+
+else if(SFTM_ITM==13)
+{
+	lcdGotoXY(8,2);
+	if(level == 0)
+	{
+		disp_float2(VALUE5);
+	}
+	else if(level == 1)
+	{
+		if(blink < 5)
+		{
+			lcdPrintData("  . ",4);
+		}
+		else
+		{
+			disp_float2(VALUE5);
+		}
+	}
+	lcdPrintData("Volt",4);
 }
 
 else if((SFTM_ITM==1)|(SFTM_ITM==3))
@@ -1444,11 +1536,10 @@ else if((SFTM_ITM==4)|(SFTM_ITM==5))
 		}
 
 
-
-if((SFTM_ITM==6)|(SFTM_ITM==7)|(SFTM_ITM==9))
+if((SFTM_ITM==6)|(SFTM_ITM==7)|(SFTM_ITM==9)|(SFTM_ITM==13))
 {
 	//lcdGotoXY(0,2);
-//	lcdPrintData("                    ",20);
+	//	lcdPrintData("                    ",20);
 }
 else{
 	lcdGotoXY(0,2);
@@ -1475,13 +1566,17 @@ if(SFTM_ITM==9){
 	lcdPrintData("Show Data On PC     ",20);//disp_delay();
 	SHOW_ROLING_EEPROM_EX_DATA();
 	}else{ 
-if((SFTM_ITM<=3)|(SFTM_ITM==6)|(SFTM_ITM==7)|(SFTM_ITM==8)|(SFTM_ITM==12))
+if((SFTM_ITM<=3)|(SFTM_ITM==6)|(SFTM_ITM==7)|(SFTM_ITM==8)|(SFTM_ITM==12)|(SFTM_ITM==13))
 {
 	if(SFTM_ITM==7)
-		{
-			eeprom_write_word(300,VALUE5);
-		}
-		else{
+	{
+		eeprom_write_word(300,VALUE5);
+	}
+	else if (SFTM_ITM==13)
+	{
+		eeprom_write_word(220,VALUE5);
+	}
+	else{
 	eeprom_write_byte((uint8_t *)aE[SFTM_ITM-1][0],VALUE2);
 	}
 }
@@ -1520,10 +1615,8 @@ lcdPrintData( "Updating Menu ERROR",19);
 lcdClear();   //clear the LCD
    }
 
-
-
 void menu_disp()
-   {
+{
 lcdClear();   //clear the LCD
 SFTM_ITM=1;
 POK=0;
@@ -1620,7 +1713,6 @@ void fire_alarm_check()
 }
 
 
-
 void secondary_display()
 {
 	
@@ -1651,7 +1743,6 @@ void secondary_display()
 			lcdPrintData("Full",4);
 		}else{lcdPrintData("    ",4);}
 }
-
 
 void fire_display()
 {
@@ -1689,7 +1780,6 @@ void high_temp_alarm()
 }
 
 void main()
-
 {
 
 uint8_t t=0,nsensor1=0,nsensor2=0;
@@ -1833,7 +1923,3 @@ chk_format();
 	}
 
 }////////main End 
-
-
-
-

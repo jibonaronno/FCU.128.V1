@@ -72,6 +72,7 @@ uint8_t SECDISP=0,SECDISPCNT=0,FC=0,FFLT=0,EXDBIT=0,blink_FF=0,blink_AC=0,lvcntr
 uint8_t HUMIDITY=0,humcntr1=0,humcntr2=0;
 uint16_t Speed=0,Pulse=0,Speed1=0,EXD=0,FJAMCNTR=0;;
 uint16_t LOWV_SET=0;
+uint16_t RECONNECT_VOLT_SET = 0;
 uint8_t HUM_SET=0;
 uint8_t ROOMHIGH=0,ACHIGH=0,TEX=0,ACON=0,ACST=0;
 uint8_t FANH=0,FANM=0,FANS=0;
