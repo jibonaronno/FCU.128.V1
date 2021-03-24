@@ -573,6 +573,9 @@ void check_reset_fan()
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////
+// MOD
+// Tune / Adjust PWM upon temperature Feedback
 void Pwm_Step()
 {
 	
@@ -581,9 +584,9 @@ void Pwm_Step()
 	
 	TEMP_DIFF=TROOM-ROOMHIGH;
 	
-	//////SPEED2=150+(TEMP_DIFF*100/(SP_DIFF-ROOMHIGH));
+	SPEED2=150+(TEMP_DIFF*100/(SP_DIFF-ROOMHIGH));
 	//pod_factor
-	SPEED2=150+((TROOM * 10) / 5);
+	////SPEED2=150+((TROOM * 10) / 5);
 	
 	/*
 	if(TROOM>=(ROOMHIGH+SP_DIFF)){SPEED2=255;}
@@ -1535,7 +1538,9 @@ else if((SFTM_ITM==4)|(SFTM_ITM==5))
 		 }
 		}
 
-
+//////////////////////////////////////////////////////////////////////////
+// MOD
+// Flickering Issues Solved Here
 if((SFTM_ITM==6)|(SFTM_ITM==7)|(SFTM_ITM==9)|(SFTM_ITM==13))
 {
 	//lcdGotoXY(0,2);
