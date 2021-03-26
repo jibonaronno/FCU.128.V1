@@ -366,9 +366,9 @@ lcdPrintData("Bismillahir         ",20);
 lcdGotoXY(0,1);  
 lcdPrintData("Rahmanir Rahim      ",20);
 lcdGotoXY(0,2);   
-lcdPrintData("Banglalink FCU_V5.07",20);
+lcdPrintData("BANGLALINK FCU V4007",20);
 lcdGotoXY(0,3);   
-lcdPrintData("HS ENGINEERING LTD. ",20);
+lcdPrintData("PICOPOWER TECHNOLOGY",20);
 
 
 //lcdPrintData("  ZASS TELECOM LTD. ",20);
@@ -856,7 +856,7 @@ void display_Main_auto()
 {
 	
 	lcdGotoXY(0,0);
-	lcdPrintData("HS ENGINEERING LTD. ",20);
+	lcdPrintData("BANGLALINK FCU V4007",20);
 	//lcdPrintData("  ZASS TELECOM LTD. ",20);
 	lcdGotoXY(0,1);
 	temp_show();
@@ -926,9 +926,9 @@ void low_voltage_check()
 	else
 	{
 		lvcntr2++;
-		if(lvcntr2 > 900)
+		if(lvcntr2 > 301)
 		{
-			lvcntr2=905;
+			lvcntr2=305;
 			FLVD=0;
 			lvcntr1=0;
 			if(BUZZER2==1)
@@ -1358,43 +1358,43 @@ lcdGotoXY(0,1);
    switch(position)
       {
 	  case 1:
-	  lcdPrintData("Fan Start Temp>=",16);
+	  lcdPrintData("FAN START TEMP>=",16);
       break;
 	  case 2:
-	  lcdPrintData("Max Speed Temp>=",16);
+	  lcdPrintData("MAX SPEED TEMP>=",16);
 	  break;
 	  case 3:
-	  lcdPrintData("Fan Stop Temp <",15);
+	  lcdPrintData("FAN STOP TEMP <",15);
 	  break;   
 	  case 4:
-	  lcdPrintData("Fan RunTime:",12);
+	  lcdPrintData("FAN RUNTIME:",12);
 	  break;
 	  case 5:
-	  lcdPrintData("FanRestTime:",12);
+	  lcdPrintData("FANRESTTIME:",12);
 	  break;
 	  case 6:
-	  lcdPrintData("Extreme Temperature>",20);
+	  lcdPrintData("ECTREME TEMPERATURE>",20);
 	  break;
 	  case 7:
-	  lcdPrintData("Fan Disconnect volt<",20);
+	  lcdPrintData("FAN DISCONNECT VOLT<",20);
 	  break;
 	  case 8:
-	  lcdPrintData("Data Interval=",14);
+	  lcdPrintData("DATA INTERVAL=",14);
 	  break;
 	  case 9:
-	  lcdPrintData("Download Data       ",20);
+	  lcdPrintData("DOWNLOAD DATA       ",20);
 	  break;
 	  case 10:
-	  lcdPrintData("Time: ",6);
+	  lcdPrintData("TIME: ",6);
 	  break;
 	  case 11:
-	  lcdPrintData("Date: ",6);
+	  lcdPrintData("DATE: ",6);
 	  break;
 	  case 12:
-	  lcdPrintData("RPM Off: ",9);
+	  lcdPrintData("RPM OFF: ",9);
 	  break;
 	  case 13:
-	  lcdPrintData("Fan Reconnect volt<",20);
+	  lcdPrintData("FAN RECONNECT VOLT< ",20);
 	  break;
       }
 

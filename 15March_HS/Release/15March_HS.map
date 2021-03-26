@@ -1115,7 +1115,7 @@ END GROUP
  *(.fini0)
                 0x00004314                _etext = .
 
-.data           0x00800100      0x406 load address 0x00004314
+.data           0x00800100      0x40e load address 0x00004314
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1132,292 +1132,293 @@ END GROUP
  .rodata        0x00800106       0x38 src/main.o
  *(.rodata*)
  .rodata.str1.1
-                0x0080013e      0x3c8 src/main.o
-                                0x40a (size before relaxing)
+                0x0080013e      0x3cf src/main.o
+                                0x40b (size before relaxing)
  *(.gnu.linkonce.r*)
-                0x00800506                . = ALIGN (0x2)
-                0x00800506                _edata = .
-                0x00800506                PROVIDE (__data_end, .)
+                0x0080050e                . = ALIGN (0x2)
+ *fill*         0x0080050d        0x1 
+                0x0080050e                _edata = .
+                0x0080050e                PROVIDE (__data_end, .)
 
-.bss            0x00800506      0x1b5
-                0x00800506                PROVIDE (__bss_start, .)
+.bss            0x0080050e      0x1b5
+                0x0080050e                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.VOLT_SAVE
-                0x00800506        0x2 src/main.o
-                0x00800506                VOLT_SAVE
- .bss.DATANO    0x00800508        0x2 src/main.o
-                0x00800508                DATANO
- .bss.YEARin    0x0080050a        0x1 src/main.o
-                0x0080050a                YEARin
- .bss.DATEin    0x0080050b        0x1 src/main.o
-                0x0080050b                DATEin
- .bss.MONTHin   0x0080050c        0x1 src/main.o
-                0x0080050c                MONTHin
- .bss.HOURin    0x0080050d        0x1 src/main.o
-                0x0080050d                HOURin
- .bss.MINin     0x0080050e        0x1 src/main.o
-                0x0080050e                MINin
- .bss.SECin     0x0080050f        0x1 src/main.o
-                0x0080050f                SECin
+                0x0080050e        0x2 src/main.o
+                0x0080050e                VOLT_SAVE
+ .bss.DATANO    0x00800510        0x2 src/main.o
+                0x00800510                DATANO
+ .bss.YEARin    0x00800512        0x1 src/main.o
+                0x00800512                YEARin
+ .bss.DATEin    0x00800513        0x1 src/main.o
+                0x00800513                DATEin
+ .bss.MONTHin   0x00800514        0x1 src/main.o
+                0x00800514                MONTHin
+ .bss.HOURin    0x00800515        0x1 src/main.o
+                0x00800515                HOURin
+ .bss.MINin     0x00800516        0x1 src/main.o
+                0x00800516                MINin
+ .bss.SECin     0x00800517        0x1 src/main.o
+                0x00800517                SECin
  .bss.T2TickCount
-                0x00800510        0x2 src/main.o
-                0x00800510                T2TickCount
+                0x00800518        0x2 src/main.o
+                0x00800518                T2TickCount
  .bss.SAVED_DATA
-                0x00800512        0x2 src/main.o
-                0x00800512                SAVED_DATA
- .bss.INTERV    0x00800514        0x1 src/main.o
-                0x00800514                INTERV
- .bss.SEC_DISP  0x00800515        0x1 src/main.o
-                0x00800515                SEC_DISP
+                0x0080051a        0x2 src/main.o
+                0x0080051a                SAVED_DATA
+ .bss.INTERV    0x0080051c        0x1 src/main.o
+                0x0080051c                INTERV
+ .bss.SEC_DISP  0x0080051d        0x1 src/main.o
+                0x0080051d                SEC_DISP
  .bss.DATATIMECOUNT
-                0x00800516        0x2 src/main.o
-                0x00800516                DATATIMECOUNT
- .bss.FANSR     0x00800518        0x1 src/main.o
-                0x00800518                FANSR
- .bss.FANMR     0x00800519        0x1 src/main.o
-                0x00800519                FANMR
- .bss.FANHR     0x0080051a        0x1 src/main.o
-                0x0080051a                FANHR
- .bss.FANS      0x0080051b        0x1 src/main.o
-                0x0080051b                FANS
- .bss.FANM      0x0080051c        0x1 src/main.o
-                0x0080051c                FANM
- .bss.FANH      0x0080051d        0x1 src/main.o
-                0x0080051d                FANH
- .bss.TEX       0x0080051e        0x1 src/main.o
-                0x0080051e                TEX
- .bss.ROOMHIGH  0x0080051f        0x1 src/main.o
-                0x0080051f                ROOMHIGH
+                0x0080051e        0x2 src/main.o
+                0x0080051e                DATATIMECOUNT
+ .bss.FANSR     0x00800520        0x1 src/main.o
+                0x00800520                FANSR
+ .bss.FANMR     0x00800521        0x1 src/main.o
+                0x00800521                FANMR
+ .bss.FANHR     0x00800522        0x1 src/main.o
+                0x00800522                FANHR
+ .bss.FANS      0x00800523        0x1 src/main.o
+                0x00800523                FANS
+ .bss.FANM      0x00800524        0x1 src/main.o
+                0x00800524                FANM
+ .bss.FANH      0x00800525        0x1 src/main.o
+                0x00800525                FANH
+ .bss.TEX       0x00800526        0x1 src/main.o
+                0x00800526                TEX
+ .bss.ROOMHIGH  0x00800527        0x1 src/main.o
+                0x00800527                ROOMHIGH
  .bss.RECONNECT_VOLT_SET
-                0x00800520        0x2 src/main.o
-                0x00800520                RECONNECT_VOLT_SET
- .bss.LOWV_SET  0x00800522        0x2 src/main.o
-                0x00800522                LOWV_SET
- .bss.FJAMCNTR  0x00800524        0x2 src/main.o
-                0x00800524                FJAMCNTR
- .bss.EXD       0x00800526        0x2 src/main.o
-                0x00800526                EXD
- .bss.Speed1    0x00800528        0x2 src/main.o
-                0x00800528                Speed1
- .bss.Pulse     0x0080052a        0x2 src/main.o
-                0x0080052a                Pulse
- .bss.humcntr2  0x0080052c        0x1 src/main.o
-                0x0080052c                humcntr2
- .bss.humcntr1  0x0080052d        0x1 src/main.o
-                0x0080052d                humcntr1
- .bss.FJAM      0x0080052e        0x1 src/main.o
-                0x0080052e                FJAM
- .bss.ONBIT     0x0080052f        0x1 src/main.o
-                0x0080052f                ONBIT
+                0x00800528        0x2 src/main.o
+                0x00800528                RECONNECT_VOLT_SET
+ .bss.LOWV_SET  0x0080052a        0x2 src/main.o
+                0x0080052a                LOWV_SET
+ .bss.FJAMCNTR  0x0080052c        0x2 src/main.o
+                0x0080052c                FJAMCNTR
+ .bss.EXD       0x0080052e        0x2 src/main.o
+                0x0080052e                EXD
+ .bss.Speed1    0x00800530        0x2 src/main.o
+                0x00800530                Speed1
+ .bss.Pulse     0x00800532        0x2 src/main.o
+                0x00800532                Pulse
+ .bss.humcntr2  0x00800534        0x1 src/main.o
+                0x00800534                humcntr2
+ .bss.humcntr1  0x00800535        0x1 src/main.o
+                0x00800535                humcntr1
+ .bss.FJAM      0x00800536        0x1 src/main.o
+                0x00800536                FJAM
+ .bss.ONBIT     0x00800537        0x1 src/main.o
+                0x00800537                ONBIT
  .bss.blink_FLV
-                0x00800530        0x1 src/main.o
-                0x00800530                blink_FLV
- .bss.FLVD      0x00800531        0x1 src/main.o
-                0x00800531                FLVD
- .bss.lvcntr1   0x00800532        0x1 src/main.o
-                0x00800532                lvcntr1
- .bss.blink_FF  0x00800533        0x1 src/main.o
-                0x00800533                blink_FF
- .bss.EXDBIT    0x00800534        0x1 src/main.o
-                0x00800534                EXDBIT
- .bss.FFLT      0x00800535        0x1 src/main.o
-                0x00800535                FFLT
- .bss.FC        0x00800536        0x1 src/main.o
-                0x00800536                FC
- .bss.lvcntr2   0x00800537        0x2 src/main.o
-                0x00800537                lvcntr2
- .bss.mma       0x00800539        0x1 src/main.o
-                0x00800539                mma
- .bss.ssa       0x0080053a        0x1 src/main.o
-                0x0080053a                ssa
- .bss.hha       0x0080053b        0x1 src/main.o
-                0x0080053b                hha
- .bss.mmf       0x0080053c        0x1 src/main.o
-                0x0080053c                mmf
- .bss.ssf       0x0080053d        0x1 src/main.o
-                0x0080053d                ssf
- .bss.hhf       0x0080053e        0x1 src/main.o
-                0x0080053e                hhf
- .bss.tmpsave2  0x0080053f        0x1 src/main.o
-                0x0080053f                tmpsave2
- .bss.tmpsave1  0x00800540        0x1 src/main.o
-                0x00800540                tmpsave1
- .bss.mm        0x00800541        0x1 src/main.o
-                0x00800541                mm
- .bss.ss        0x00800542        0x1 src/main.o
-                0x00800542                ss
- .bss.hh        0x00800543        0x1 src/main.o
-                0x00800543                hh
- .bss.cnTT2     0x00800544        0x1 src/main.o
-                0x00800544                cnTT2
- .bss.cnTT1     0x00800545        0x1 src/main.o
-                0x00800545                cnTT1
- .bss.PDB       0x00800546        0x2 src/main.o
-                0x00800546                PDB
- .bss.PDB_AVG   0x00800548        0x2 src/main.o
-                0x00800548                PDB_AVG
+                0x00800538        0x1 src/main.o
+                0x00800538                blink_FLV
+ .bss.FLVD      0x00800539        0x1 src/main.o
+                0x00800539                FLVD
+ .bss.lvcntr1   0x0080053a        0x1 src/main.o
+                0x0080053a                lvcntr1
+ .bss.blink_FF  0x0080053b        0x1 src/main.o
+                0x0080053b                blink_FF
+ .bss.EXDBIT    0x0080053c        0x1 src/main.o
+                0x0080053c                EXDBIT
+ .bss.FFLT      0x0080053d        0x1 src/main.o
+                0x0080053d                FFLT
+ .bss.FC        0x0080053e        0x1 src/main.o
+                0x0080053e                FC
+ .bss.lvcntr2   0x0080053f        0x2 src/main.o
+                0x0080053f                lvcntr2
+ .bss.mma       0x00800541        0x1 src/main.o
+                0x00800541                mma
+ .bss.ssa       0x00800542        0x1 src/main.o
+                0x00800542                ssa
+ .bss.hha       0x00800543        0x1 src/main.o
+                0x00800543                hha
+ .bss.mmf       0x00800544        0x1 src/main.o
+                0x00800544                mmf
+ .bss.ssf       0x00800545        0x1 src/main.o
+                0x00800545                ssf
+ .bss.hhf       0x00800546        0x1 src/main.o
+                0x00800546                hhf
+ .bss.tmpsave2  0x00800547        0x1 src/main.o
+                0x00800547                tmpsave2
+ .bss.tmpsave1  0x00800548        0x1 src/main.o
+                0x00800548                tmpsave1
+ .bss.mm        0x00800549        0x1 src/main.o
+                0x00800549                mm
+ .bss.ss        0x0080054a        0x1 src/main.o
+                0x0080054a                ss
+ .bss.hh        0x0080054b        0x1 src/main.o
+                0x0080054b                hh
+ .bss.cnTT2     0x0080054c        0x1 src/main.o
+                0x0080054c                cnTT2
+ .bss.cnTT1     0x0080054d        0x1 src/main.o
+                0x0080054d                cnTT1
+ .bss.PDB       0x0080054e        0x2 src/main.o
+                0x0080054e                PDB
+ .bss.PDB_AVG   0x00800550        0x2 src/main.o
+                0x00800550                PDB_AVG
  .bss.ADAVGCNTR4
-                0x0080054a        0x2 src/main.o
-                0x0080054a                ADAVGCNTR4
- .bss.PDB_temp  0x0080054c        0x2 src/main.o
-                0x0080054c                PDB_temp
+                0x00800552        0x2 src/main.o
+                0x00800552                ADAVGCNTR4
+ .bss.PDB_temp  0x00800554        0x2 src/main.o
+                0x00800554                PDB_temp
  .bss.ADAVGCNTR
-                0x0080054e        0x2 src/main.o
-                0x0080054e                ADAVGCNTR
- .bss.BTVOLT    0x00800550        0x4 src/main.o
-                0x00800550                BTVOLT
+                0x00800556        0x2 src/main.o
+                0x00800556                ADAVGCNTR
+ .bss.BTVOLT    0x00800558        0x4 src/main.o
+                0x00800558                BTVOLT
  .bss.floatvalAVG
-                0x00800554        0x4 src/main.o
-                0x00800554                floatvalAVG
+                0x0080055c        0x4 src/main.o
+                0x0080055c                floatvalAVG
  .bss.floatvalB
-                0x00800558        0x4 src/main.o
-                0x00800558                floatvalB
- .bss.RPM       0x0080055c        0x2 src/main.o
-                0x0080055c                RPM
+                0x00800560        0x4 src/main.o
+                0x00800560                floatvalB
+ .bss.RPM       0x00800564        0x2 src/main.o
+                0x00800564                RPM
  .bss.FANFAULTY
-                0x0080055e        0x2 src/main.o
-                0x0080055e                FANFAULTY
- .bss.VALUE5    0x00800560        0x2 src/main.o
-                0x00800560                VALUE5
- .bss.ACFAULTY  0x00800562        0x2 src/main.o
-                0x00800562                ACFAULTY
+                0x00800566        0x2 src/main.o
+                0x00800566                FANFAULTY
+ .bss.VALUE5    0x00800568        0x2 src/main.o
+                0x00800568                VALUE5
+ .bss.ACFAULTY  0x0080056a        0x2 src/main.o
+                0x0080056a                ACFAULTY
  .bss.F_OF_CNTR
-                0x00800564        0x2 src/main.o
-                0x00800564                F_OF_CNTR
- .bss.OF_CNTR   0x00800566        0x2 src/main.o
-                0x00800566                OF_CNTR
- .bss.ON_CNTR   0x00800568        0x2 src/main.o
-                0x00800568                ON_CNTR
- .bss.TAVGCN1   0x0080056a        0x1 src/main.o
-                0x0080056a                TAVGCN1
- .bss.TAVGCN2   0x0080056b        0x1 src/main.o
-                0x0080056b                TAVGCN2
+                0x0080056c        0x2 src/main.o
+                0x0080056c                F_OF_CNTR
+ .bss.OF_CNTR   0x0080056e        0x2 src/main.o
+                0x0080056e                OF_CNTR
+ .bss.ON_CNTR   0x00800570        0x2 src/main.o
+                0x00800570                ON_CNTR
+ .bss.TAVGCN1   0x00800572        0x1 src/main.o
+                0x00800572                TAVGCN1
+ .bss.TAVGCN2   0x00800573        0x1 src/main.o
+                0x00800573                TAVGCN2
  .bss.EXTR_HIGH
-                0x0080056c        0x1 src/main.o
-                0x0080056c                EXTR_HIGH
- .bss.COMPOWER  0x0080056d        0x1 src/main.o
-                0x0080056d                COMPOWER
- .bss.FANMODE   0x0080056e        0x1 src/main.o
-                0x0080056e                FANMODE
- .bss.ACMODE    0x0080056f        0x1 src/main.o
-                0x0080056f                ACMODE
- .bss.HuT       0x00800570        0x2 src/main.o
-                0x00800570                HuT
+                0x00800574        0x1 src/main.o
+                0x00800574                EXTR_HIGH
+ .bss.COMPOWER  0x00800575        0x1 src/main.o
+                0x00800575                COMPOWER
+ .bss.FANMODE   0x00800576        0x1 src/main.o
+                0x00800576                FANMODE
+ .bss.ACMODE    0x00800577        0x1 src/main.o
+                0x00800577                ACMODE
+ .bss.HuT       0x00800578        0x2 src/main.o
+                0x00800578                HuT
  .bss.TEMP_AVG1
-                0x00800572        0x2 src/main.o
-                0x00800572                TEMP_AVG1
- .bss.TEMP_AVG2
-                0x00800574        0x2 src/main.o
-                0x00800574                TEMP_AVG2
- .bss.PASS      0x00800576        0x1 src/main.o
-                0x00800576                PASS
- .bss.POK       0x00800577        0x1 src/main.o
-                0x00800577                POK
- .bss.ssaa      0x00800578        0x2 src/main.o
-                0x00800578                ssaa
- .bss.sub_level2
                 0x0080057a        0x2 src/main.o
-                0x0080057a                sub_level2
- .bss.LeisureBIT
+                0x0080057a                TEMP_AVG1
+ .bss.TEMP_AVG2
                 0x0080057c        0x2 src/main.o
-                0x0080057c                LeisureBIT
- .bss.MAINMENU  0x0080057e        0x2 src/main.o
-                0x0080057e                MAINMENU
- .bss.ACDELAY   0x00800580        0x1 src/main.o
-                0x00800580                ACDELAY
- .bss.ACREST    0x00800581        0x1 src/main.o
-                0x00800581                ACREST
- .bss.FANREST   0x00800582        0x1 src/main.o
-                0x00800582                FANREST
- .bss.VALUE4    0x00800583        0x1 src/main.o
-                0x00800583                VALUE4
- .bss.VALUE3    0x00800584        0x1 src/main.o
-                0x00800584                VALUE3
- .bss.blink     0x00800585        0x1 src/main.o
-                0x00800585                blink
- .bss.VALUE2    0x00800586        0x1 src/main.o
-                0x00800586                VALUE2
+                0x0080057c                TEMP_AVG2
+ .bss.PASS      0x0080057e        0x1 src/main.o
+                0x0080057e                PASS
+ .bss.POK       0x0080057f        0x1 src/main.o
+                0x0080057f                POK
+ .bss.ssaa      0x00800580        0x2 src/main.o
+                0x00800580                ssaa
+ .bss.sub_level2
+                0x00800582        0x2 src/main.o
+                0x00800582                sub_level2
+ .bss.LeisureBIT
+                0x00800584        0x2 src/main.o
+                0x00800584                LeisureBIT
+ .bss.MAINMENU  0x00800586        0x2 src/main.o
+                0x00800586                MAINMENU
+ .bss.ACDELAY   0x00800588        0x1 src/main.o
+                0x00800588                ACDELAY
+ .bss.ACREST    0x00800589        0x1 src/main.o
+                0x00800589                ACREST
+ .bss.FANREST   0x0080058a        0x1 src/main.o
+                0x0080058a                FANREST
+ .bss.VALUE4    0x0080058b        0x1 src/main.o
+                0x0080058b                VALUE4
+ .bss.VALUE3    0x0080058c        0x1 src/main.o
+                0x0080058c                VALUE3
+ .bss.blink     0x0080058d        0x1 src/main.o
+                0x0080058d                blink
+ .bss.VALUE2    0x0080058e        0x1 src/main.o
+                0x0080058e                VALUE2
  .bss.sub_level
-                0x00800587        0x1 src/main.o
-                0x00800587                sub_level
- .bss.level     0x00800588        0x1 src/main.o
-                0x00800588                level
- .bss.BUTTON    0x00800589        0x1 src/main.o
-                0x00800589                BUTTON
- .bss.SFTM_ITM  0x0080058a        0x1 src/main.o
-                0x0080058a                SFTM_ITM
- .bss.TOUT      0x0080058b        0x2 src/main.o
-                0x0080058b                TOUT
- .bss.TROOM     0x0080058d        0x2 src/main.o
-                0x0080058d                TROOM
- .bss.SP_DIFF   0x0080058f        0x1 src/main.o
-                0x0080058f                SP_DIFF
- .bss.extcntr2  0x00800590        0x1 src/main.o
-                0x00800590                extcntr2
- .bss.extcntr1  0x00800591        0x1 src/main.o
-                0x00800591                extcntr1
+                0x0080058f        0x1 src/main.o
+                0x0080058f                sub_level
+ .bss.level     0x00800590        0x1 src/main.o
+                0x00800590                level
+ .bss.BUTTON    0x00800591        0x1 src/main.o
+                0x00800591                BUTTON
+ .bss.SFTM_ITM  0x00800592        0x1 src/main.o
+                0x00800592                SFTM_ITM
+ .bss.TOUT      0x00800593        0x2 src/main.o
+                0x00800593                TOUT
+ .bss.TROOM     0x00800595        0x2 src/main.o
+                0x00800595                TROOM
+ .bss.SP_DIFF   0x00800597        0x1 src/main.o
+                0x00800597                SP_DIFF
+ .bss.extcntr2  0x00800598        0x1 src/main.o
+                0x00800598                extcntr2
+ .bss.extcntr1  0x00800599        0x1 src/main.o
+                0x00800599                extcntr1
  .bss.fjamcntr2
-                0x00800592        0x1 src/main.o
-                0x00800592                fjamcntr2
+                0x0080059a        0x1 src/main.o
+                0x0080059a                fjamcntr2
  .bss.fjamcntr1
-                0x00800593        0x1 src/main.o
-                0x00800593                fjamcntr1
+                0x0080059b        0x1 src/main.o
+                0x0080059b                fjamcntr1
  .bss.FIRE_ALARM
-                0x00800594        0x1 src/main.o
-                0x00800594                FIRE_ALARM
- .bss.RPMWORKS  0x00800595        0x2 src/main.o
-                0x00800595                RPMWORKS
+                0x0080059c        0x1 src/main.o
+                0x0080059c                FIRE_ALARM
+ .bss.RPMWORKS  0x0080059d        0x2 src/main.o
+                0x0080059d                RPMWORKS
  .bss.RESET_CNTR1
-                0x00800597        0x2 src/main.o
-                0x00800597                RESET_CNTR1
+                0x0080059f        0x2 src/main.o
+                0x0080059f                RESET_CNTR1
  .bss.BUZZERCNTR2
-                0x00800599        0x2 src/main.o
-                0x00800599                BUZZERCNTR2
- .bss.BUZZER2   0x0080059b        0x2 src/main.o
-                0x0080059b                BUZZER2
+                0x008005a1        0x2 src/main.o
+                0x008005a1                BUZZERCNTR2
+ .bss.BUZZER2   0x008005a3        0x2 src/main.o
+                0x008005a3                BUZZER2
  .bss.BUZZERCNTR
-                0x0080059d        0x2 src/main.o
-                0x0080059d                BUZZERCNTR
+                0x008005a5        0x2 src/main.o
+                0x008005a5                BUZZERCNTR
  .bss.FANRESETCNTR
-                0x0080059f        0x1 src/main.o
-                0x0080059f                FANRESETCNTR
- .bss.FANRESET  0x008005a0        0x1 src/main.o
-                0x008005a0                FANRESET
- .bss.FANL      0x008005a1        0x1 src/main.o
-                0x008005a1                FANL
+                0x008005a7        0x1 src/main.o
+                0x008005a7                FANRESETCNTR
+ .bss.FANRESET  0x008005a8        0x1 src/main.o
+                0x008005a8                FANRESET
+ .bss.FANL      0x008005a9        0x1 src/main.o
+                0x008005a9                FANL
  .bss.data_count
-                0x008005a2        0x1 src/main.o
-                0x008005a2                data_count
+                0x008005aa        0x1 src/main.o
+                0x008005aa                data_count
  *(COMMON)
- COMMON         0x008005a3      0x118 src/main.o
-                0x008005a3                StopString
-                0x008005c7                rtc_register
-                0x008005ce                uchar
-                0x008005d1                DataContent
-                0x008005f5                data_in
-                0x00800618                FHUM
-                0x0080061a                tot_overflow
-                0x0080061c                Did
-                0x0080061e                VOLT
-                0x00800622                aE
-                0x0080066d                time
-                0x00800677                cnttime
-                0x00800678                day
-                0x00800679                ADAVGCNTR2
-                0x0080067b                date
-                0x00800687                gSensorIDs
-                0x008006af                ch
-                0x008006b9                ADAVGCNTR3
-                0x008006bb                PROVIDE (__bss_end, .)
+ COMMON         0x008005ab      0x118 src/main.o
+                0x008005ab                StopString
+                0x008005cf                rtc_register
+                0x008005d6                uchar
+                0x008005d9                DataContent
+                0x008005fd                data_in
+                0x00800620                FHUM
+                0x00800622                tot_overflow
+                0x00800624                Did
+                0x00800626                VOLT
+                0x0080062a                aE
+                0x00800675                time
+                0x0080067f                cnttime
+                0x00800680                day
+                0x00800681                ADAVGCNTR2
+                0x00800683                date
+                0x0080068f                gSensorIDs
+                0x008006b7                ch
+                0x008006c1                ADAVGCNTR3
+                0x008006c3                PROVIDE (__bss_end, .)
                 0x00004314                __data_load_start = LOADADDR (.data)
-                0x0000471a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00004722                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008006bb        0x0
+.noinit         0x008006c3        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x008006bb                _end = .
+                0x008006c3                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
